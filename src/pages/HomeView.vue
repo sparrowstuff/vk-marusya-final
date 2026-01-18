@@ -1,37 +1,35 @@
 <template>
-  <div class="container">
-    <RandomMovie />
+  <RandomMovie />
 
-    <article class="top-catalog">
-      <h2 class="top-catalog__title">Топ 10 фильмов</h2>
-      <div class="top-catalog__catalog" v-if="menuForMobile">
-        <top-10-movie
-          v-for="(movie, index) in topMovies"
-          :key="movie.id"
-          :film="movie"
-          :number="index"
-        />
-      </div>
-      <swiper
-        v-else
-        :modules="[Autoplay, Navigation]"
-        :slides-per-view="1"
-        :space-between="40"
-        @swiper="onSwiper"
-        :navigation="true"
-        :loop="true"
-        :autoplay="{
-          delay: 3000,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        }"
-      >
-        <SwiperSlide class="swiper-slide" v-for="(movie, index) in topMovies" :key="movie.id">
-          <top-10-movie class="swiper-movie" :film="movie" :movies="topMovies" :number="index" />
-        </SwiperSlide>
-      </swiper>
-    </article>
-  </div>
+  <article class="top-catalog">
+    <h2 class="top-catalog__title">Топ 10 фильмов</h2>
+    <div class="top-catalog__catalog" v-if="menuForMobile">
+      <top-10-movie
+        v-for="(movie, index) in topMovies"
+        :key="movie.id"
+        :film="movie"
+        :number="index"
+      />
+    </div>
+    <swiper
+      v-else
+      :modules="[Autoplay, Navigation]"
+      :slides-per-view="1"
+      :space-between="40"
+      @swiper="onSwiper"
+      :navigation="true"
+      :loop="true"
+      :autoplay="{
+        delay: 3000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      }"
+    >
+      <SwiperSlide class="swiper-slide" v-for="(movie, index) in topMovies" :key="movie.id">
+        <top-10-movie class="swiper-movie" :film="movie" :movies="topMovies" :number="index" />
+      </SwiperSlide>
+    </swiper>
+  </article>
 </template>
 
 <script setup lang="ts">
