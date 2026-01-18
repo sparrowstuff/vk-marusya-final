@@ -1,0 +1,52 @@
+@use './fonts';
+
+// font-size
+$px-12: 0.75rem;
+$px-14: 0.87rem;
+$px-16: 1rem;
+$px-18: 1.12rem;
+$px-20: 1.25rem;
+$px-24: 1.5rem;
+$px-32: 2rem;
+$px-40: 2.5rem;
+$px-48: 3rem;
+$px-56: 3.5rem;
+
+// colors
+$yellow: yellow;
+$white: #ffffff;
+$white-secondary: rgba(255, 255, 255, 0.7);
+$white-50: rgba(255, 255, 255, 0.5);
+$pink-link-hover: #dc5dfc;
+$light-blue: #67a5eb;
+$grey-btn-hover: #393b3c;
+$pink-input-hover: #b4a9ff;
+$grey-btn: #333333;
+$pink-film-count: #6a5dc2;
+$gold-rating: #a59400;
+$green-rating: #308e21;
+$grey-rating: #777777;
+$red-rating: #c82020;
+$red-error: #ff7575;
+$button-border: #00000066;
+$black: #000000;
+$black-deep: #0a0b0b;
+$black-40: #00000066;
+$purple-border: #ffffff40;
+$card-shadow: #ffffff54;
+
+// background-colors:
+$dark-start: #1a084d;
+$dark-end: rgba(39, 36, 36, 0.7);
+$blue-start: rgba(39, 135, 245, 0.18);
+$purple-end: rgba(163, 147, 245, 0.18);
+
+// font-family
+$font-play: 'Play', 'Arial', sans-serif;
+
+// viewport
+$px-768: 64rem;
+$px-320: 20rem;
+
+// transition
+$transition-300: ease-in 0.3s;

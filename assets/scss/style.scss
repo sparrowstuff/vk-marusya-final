@@ -1,0 +1,12 @@
+// global:
+
+@use '../scss/global/_variables' as vars;
+@use '../scss/global/_normalize';
+@use '../scss/global/_fonts';
+@use '../scss/global/_reboot';
+@use '../scss/global/_container';
+
+// blocks:
+
+@use '../scss/blocks/_btn';
+@use '../scss/blocks/_socials';

@@ -1,0 +1,109 @@
+@use '../global/variables' as *;
+
+.btn {
+  padding: 1rem 3rem 1rem 3rem;
+  border-radius: 1.75rem;
+  background-color: $grey-btn-hover;
+  border: unset;
+  max-height: 3.5rem;
+
+  font-size: $px-18;
+  line-height: $px-24;
+  color: $white;
+  font-weight: 700;
+
+  transition:
+    color $transition-300,
+    background-color $transition-300,
+    scale $transition-300,
+    transform $transition-300;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $light-blue;
+  }
+
+  &--transparent {
+    background-color: transparent;
+    color: $white;
+    padding: unset;
+
+    svg {
+      margin-top: 0.2rem;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background-color: transparent;
+      scale: 1.2;
+    }
+  }
+
+  &--auth {
+    padding: unset;
+    background-color: transparent;
+    position: relative;
+
+    &::before {
+      content: '';
+      width: 100%;
+      height: 1.5px;
+      background-color: $pink-link-hover;
+      position: absolute;
+      bottom: -30%;
+      left: 0;
+      clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+
+      transition: clip-path $transition-300;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background-color: transparent;
+      &::before {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+  }
+
+  &--auth-black {
+    color: $black;
+  }
+
+  &--close {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    max-height: unset;
+    background-color: white;
+    color: $black;
+    padding: unset;
+    position: relative;
+
+    @media (max-width: 64rem) {
+      width: 4rem;
+      height: 3rem;
+    }
+
+    @media (max-width: 51.87rem) {
+      width: 2rem;
+      height: 2rem;
+
+      svg {
+        scale: 0.7;
+      }
+    }
+
+    @media (max-width: 39.37rem) {
+      height: 1.5rem;
+    }
+  }
+
+  &--circle {
+    padding: 1rem 1rem 1rem 1rem;
+    border-radius: 1.75rem;
+  }
+}

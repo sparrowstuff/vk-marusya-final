@@ -1,0 +1,46 @@
+@use '../global/variables' as *;
+
+.socials {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  $root: &;
+
+  &__link {
+    width: 2.25rem;
+    height: 2.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $white;
+    border-radius: 0.5rem;
+    transition:
+      scale $transition-300,
+      border-color $transition-300;
+
+    &:nth-child(n + 2) {
+      .socials__icon {
+        margin-top: 0.25rem;
+      }
+    }
+
+    &:hover,
+    &:focus-visible {
+      scale: 1.1;
+      border-color: $pink-link-hover;
+
+      #{$root}__icon {
+        color: $pink-link-hover;
+      }
+    }
+  }
+
+  &__icon {
+    transition: color $transition-300;
+  }
+
+  @media (max-width: 40.62rem) {
+    justify-content: flex-start;
+  }
+}
