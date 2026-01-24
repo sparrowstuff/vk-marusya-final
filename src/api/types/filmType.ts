@@ -10,6 +10,7 @@ export type Film = {
   posterUrl?: string
   backdropUrl?: string
   production?: string
+  plot: string
   tmdbRating: number
   trailerUrl: string
   awardsSummary?: string
