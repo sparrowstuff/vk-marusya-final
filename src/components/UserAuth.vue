@@ -101,4 +101,20 @@ const goToSettings = () => {
 
 <style scoped lang="scss">
 @use '../../assets/scss/global/variables' as *;
+
+@keyframes MainLinkShowDown {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.user-menu,
+.user-menu--mobile {
+  opacity: 0;
+  animation: MainLinkShowDown 1s ease-in-out forwards 0.3s;
+}
 </style>

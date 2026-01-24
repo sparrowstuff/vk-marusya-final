@@ -56,7 +56,13 @@
           </svg>
         </button>
       </div>
-      <div class="custom-search" :class="{ 'custom-search--show': showSearchInput }">
+      <div
+        class="custom-search"
+        :class="[
+          { 'custom-search--show': showSearchInput },
+          { 'custom-search--notActive': searchNotActive },
+        ]"
+      >
         <label for="searchFilm" class="custom-search__label"
           ><svg
             class="custom-search__search-icon"
@@ -152,11 +158,6 @@ import { Navigation } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 
-// const items = [
-//   { to: '/home', name: 'Главная' },
-//   { to: '/genres', name: 'Жанры' },
-// ]
-
 const user = useAuthStore()
 const moviesStore = useMoviesStore()
 const searchText = ref('')
@@ -169,6 +170,10 @@ const modalStore = useModalStore()
 const searchResultsForDesktop = ref(true)
 const searchTimeout = ref<NodeJS.Timeout | null>(null)
 const isDebouncing = ref(false)
+
+const searchNotActive = computed(() => {
+  return !menuForMobile.value && !showSearchInput.value
+})
 
 const checkWindowWidth = () => {
   menuForMobile.value = window.innerWidth > 1024
@@ -245,6 +250,7 @@ const top5SearchMovies = computed(() => {
 
 const toggleSearch = () => {
   showSearchInput.value = !showSearchInput.value
+  // searchNotActive.value = !searchNotActive.value
 
   if (!showSearchInput.value) {
     clearSearch()
@@ -270,6 +276,40 @@ const isSearching = computed(() => {
 
 <style scoped lang="scss">
 @use '../../assets/scss/global/variables' as *;
+
+@keyframes MainLinkShowDown {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes NavLinkShow {
+  0% {
+    opacity: 0;
+    scale: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes InputClippyAppearance {
+  0% {
+    opacity: 0;
+    clip-path: polygon(50% 0%, 50% 0%, 50% 100%, 50% 100%);
+  }
+
+  100% {
+    opacity: 1;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+}
 
 .main-menu {
   display: flex;
@@ -303,6 +343,15 @@ const isSearching = computed(() => {
     line-height: $px-32;
     color: $white;
     position: relative;
+
+    opacity: 0;
+
+    &:first-child {
+      animation: NavLinkShow 1s ease-out forwards 0.3s;
+    }
+    &:last-child {
+      animation: NavLinkShow 1s ease-out forwards 0.6s;
+    }
 
     &::before {
       content: '';
@@ -343,6 +392,16 @@ const isSearching = computed(() => {
         scale: 1.2;
       }
     }
+
+    #{$root}__mobile-link {
+      opacity: 0;
+      animation: NavLinkShow 1s ease-out forwards 0.3s;
+    }
+
+    #{$root}__search-btn {
+      opacity: 0;
+      animation: NavLinkShow 1s ease-out forwards 0.3s;
+    }
   }
 }
 
@@ -354,6 +413,10 @@ const isSearching = computed(() => {
 
 .main-link {
   $root: &;
+
+  opacity: 0;
+
+  animation: MainLinkShowDown 2s ease-in forwards 0.3s;
 
   &__img {
     transition: scale $transition-300;
@@ -373,7 +436,7 @@ const isSearching = computed(() => {
   width: 100%;
   $root: &;
   transition: opacity $transition-300;
-  z-index: -2;
+  z-index: 2;
 
   @media (max-width: 79.37rem) {
     max-width: 27rem;
@@ -383,7 +446,6 @@ const isSearching = computed(() => {
     position: fixed;
     top: 4rem;
     left: 43%;
-    // z-index: 10;
     opacity: 0;
   }
 
@@ -426,7 +488,11 @@ const isSearching = computed(() => {
     position: absolute;
     top: 50%;
     left: 2%;
+    z-index: 1;
     transform: translateY(-50%);
+
+    opacity: 0;
+    animation: MainLinkShowDown 1s ease-in forwards 0.3s;
   }
 
   &__search-icon {
@@ -449,6 +515,9 @@ const isSearching = computed(() => {
     background-color: $grey-btn-hover;
     transition: border-color $transition-300;
     outline: unset;
+
+    opacity: 0;
+    animation: InputClippyAppearance 1s ease-in forwards 0.3s;
 
     font-size: $px-18;
     line-height: $px-24;
@@ -499,6 +568,10 @@ const isSearching = computed(() => {
     opacity: 1;
     pointer-events: all;
     z-index: 15;
+  }
+
+  &--notActive {
+    pointer-events: none;
   }
 
   &__no-films,
