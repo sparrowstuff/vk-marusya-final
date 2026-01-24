@@ -13,7 +13,7 @@ onMounted(async () => {
 <template>
   <div class="container">
     <header class="header">
-      <MainMenu />
+      <MainMenu class="main-menu" />
     </header>
     <div class="hero">
       <RouterView />
