@@ -1,7 +1,7 @@
 export type Film = {
   id: number
   title: string
-  originalTitle: string
+  originalTitle?: string
   language?: string
   releaseYear: string
   genres?: string[]
@@ -10,9 +10,9 @@ export type Film = {
   posterUrl?: string
   backdropUrl?: string
   production?: string
-  plot: string
+  plot?: string
   tmdbRating: number
-  trailerUrl: string
+  trailerUrl?: string
   awardsSummary?: string
   director?: string
   revenue?: string
