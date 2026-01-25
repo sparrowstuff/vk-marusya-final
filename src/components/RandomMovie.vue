@@ -249,11 +249,26 @@ const goToFilm = () => {
 <style scoped lang="scss">
 @use '../../assets/scss/global/variables' as *;
 
+@keyframes MovieSlideIn {
+  0% {
+    transform: translateX(-3rem);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 .random-movie {
   margin-top: 1.5rem;
   $root: &;
   position: relative;
   margin-bottom: 2.5rem;
+  opacity: 0;
+
+  animation: MovieSlideIn 0.5s ease-in forwards 0.1s;
 
   &__wrapper {
     display: grid;

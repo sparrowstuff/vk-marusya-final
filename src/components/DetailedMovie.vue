@@ -287,11 +287,39 @@ const formattedRevenue = computed(() => formatNumber(film.value?.revenue))
 <style scoped lang="scss">
 @use '../../assets/scss/global/variables' as *;
 
+@keyframes MovieSlideIn {
+  0% {
+    transform: translateX(-3rem);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes MovieDescriptionShowUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-0.62rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .detailed-movie {
   margin-top: 1.5rem;
   $root: &;
   position: relative;
   margin-bottom: 2.5rem;
+
+  opacity: 0;
+
+  animation: MovieSlideIn 0.5s ease-in forwards 0.1s;
 
   &__wrapper {
     display: grid;
@@ -513,14 +541,33 @@ const formattedRevenue = computed(() => formatNumber(film.value?.revenue))
     flex-direction: column;
     gap: 1.5rem;
     align-items: flex-start;
-    // max-width: 31.25rem;
   }
 
   &__info-block {
     display: table-row;
+    opacity: 0;
 
     width: 100%;
     position: relative;
+
+    &:nth-child(1) {
+      animation: MovieDescriptionShowUp 1s ease-in forwards 0.3s;
+    }
+    &:nth-child(2) {
+      animation: MovieDescriptionShowUp 1s ease-in forwards 0.5s;
+    }
+    &:nth-child(3) {
+      animation: MovieDescriptionShowUp 1s ease-in forwards 0.7s;
+    }
+    &:nth-child(4) {
+      animation: MovieDescriptionShowUp 1s ease-in forwards 0.9s;
+    }
+    &:nth-child(5) {
+      animation: MovieDescriptionShowUp 1s ease-in forwards 1.1s;
+    }
+    &:nth-child(6) {
+      animation: MovieDescriptionShowUp 1s ease-in forwards 1.3s;
+    }
 
     @media (max-width: 40.62rem) {
       display: flex;
