@@ -5,7 +5,6 @@ import { createPinia, setActivePinia } from 'pinia'
 import { createRouter, createWebHistory, createMemoryHistory, useRoute } from 'vue-router'
 import { useAuthStore } from '@/stores/authStore'
 import type { User } from '@/api/types/userType'
-import { write } from 'fs'
 
 vi.mock('@/stores/authStore', () => ({
   useAuthStore: () => ({

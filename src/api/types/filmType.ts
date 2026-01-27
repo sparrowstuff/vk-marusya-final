@@ -18,3 +18,11 @@ export type Film = {
   revenue?: string
   runtime: number
 }
+
+export type Genre = {
+  id: number
+  name: string
+  name_ru?: string
+  slug?: string
+  image?: string
+}
