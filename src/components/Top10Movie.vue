@@ -17,6 +17,7 @@
       width="224"
       height="336"
     />
+    <span class="top-film__title">{{ film.title }}</span>
   </div>
 </template>
 
@@ -26,6 +27,7 @@ import { useRoute, useRouter } from 'vue-router'
 type TopFilm = {
   id: number
   posterUrl: string
+  title: string
 }
 
 const props = defineProps<{
@@ -48,13 +50,12 @@ const goToFilm = () => {
   position: relative;
   cursor: pointer;
   transition: scale $transition-300;
+  $root: &;
 
   &:hover,
   &:focus-visible {
-    scale: 1.05;
-
-    @media (max-width: 31.25rem) {
-      scale: 1.03;
+    #{$root}__title {
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
     }
   }
 
@@ -91,16 +92,32 @@ const goToFilm = () => {
     left: -8%;
 
     @media (max-width: 48rem) {
-      left: 12%;
-    }
-
-    @media (max-width: 40.62rem) {
-      left: 7%;
+      left: -2%;
     }
 
     @media (max-width: 36.25rem) {
       left: -4%;
     }
+  }
+
+  &__title {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.62rem;
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+    transition: clip-path $transition-300;
+    backdrop-filter: blur(5px);
+    border-radius: 1rem;
+
+    font-size: 2rem;
+    line-height: 110%;
+    font-weight: 600;
+    text-align: center;
   }
 }
 

@@ -23,7 +23,7 @@
       <h2 class="genre-catalog__title">{{ genreNameRu }}</h2>
     </div>
 
-    <span v-if="loading" class="genre-catalog__loading">Загрузка фильмов...</span>
+    <span class="loader" v-if="loading"></span>
     <div v-else-if="filteredMovies.length > 0" class="genre-catalog__catalog">
       <div v-for="movie in filteredMovies" :key="movie.id" class="genre-catalog__movie">
         <Top10Movie :film="movie" class="genre-catalog__movie-card" />
@@ -141,6 +141,12 @@ const genreNameRu = computed(() => {
     @media (max-width: 31.25rem) {
       grid-template-columns: repeat(1, 1fr);
     }
+  }
+
+  &__no-movies {
+    font-size: $px-48;
+    line-height: $px-56;
+    color: $white;
   }
 
   &__movie-card {

@@ -4,7 +4,7 @@ import ModalMenu from '@/components/ModalMenu.vue'
 import { createPinia, setActivePinia } from 'pinia'
 import { createRouter, createWebHistory, createMemoryHistory, useRoute } from 'vue-router'
 import GenreCard from '@/components/GenreCard.vue'
-import type { Genre } from '@/components/GenreCard.vue'
+import type { Genre } from '@/api/types/filmType'
 import GenreFilteredView from '@/pages/GenreFilteredView.vue'
 
 const mockGenre: Genre = {

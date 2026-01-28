@@ -1,7 +1,8 @@
 <template>
-  <div class="genres-menu">
+  <div class="genres-menu" v-if="genres.length !== 0">
     <genre-card v-for="(genre, index) in genres" :key="index" :card="genre" />
   </div>
+  <span class="loader" v-else></span>
 </template>
 
 <script setup lang="ts">

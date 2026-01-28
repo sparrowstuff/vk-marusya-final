@@ -110,6 +110,7 @@
       ></iframe>
     </div>
   </article>
+  <span class="loader" v-else></span>
 
   <article class="movie-description">
     <h3 class="movie-description__title">О фильме</h3>
@@ -161,11 +162,6 @@ const modalStore = useModalStore()
 const loading = ref<Boolean>(true)
 const showTrailer = ref<Boolean>(false)
 const film = ref<Film | null>(null)
-
-// const filmTitleToHead = computed(() => {
-//   const filmTitle = film.value?.title || `Фильм ${id.value}`
-//   return filmTitle
-// })
 
 defineOptions({
   inheritAttrs: false,
@@ -484,7 +480,6 @@ const formattedRevenue = computed(() => formatNumber(film.value?.revenue))
     @media (max-width: 39.37rem) {
       max-width: 23.43rem;
       gap: 0.4rem;
-      // max-height: 13.25rem;
     }
 
     @media (max-width: 26.87rem) {

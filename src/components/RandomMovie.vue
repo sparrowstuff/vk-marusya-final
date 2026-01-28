@@ -130,6 +130,7 @@
       ></iframe>
     </div>
   </article>
+  <span class="loader" v-else></span>
 </template>
 
 <script setup lang="ts">

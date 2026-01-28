@@ -1,7 +1,7 @@
 <template>
   <RandomMovie />
 
-  <article class="top-catalog">
+  <article class="top-catalog" v-if="topMovies.length !== 0">
     <h2 class="top-catalog__title">Топ 10 фильмов</h2>
     <div class="top-catalog__catalog" v-if="menuForMobile">
       <top-10-movie
@@ -30,6 +30,7 @@
       </SwiperSlide>
     </swiper>
   </article>
+  <span class="loader" v-else></span>
 </template>
 
 <script setup lang="ts">
