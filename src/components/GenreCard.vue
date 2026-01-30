@@ -18,52 +18,52 @@ const displayName = computed(() => {
   return props.card.name_ru || props.card.name
 })
 
+const getFullPath = (path: string): string => {
+  const base = import.meta.env.BASE_URL || ''
+
+  // Если путь уже абсолютный
+  if (path.startsWith('http') || path.startsWith('//')) {
+    return path
+  }
+
+  // Убираем лишние слеши
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path
+  const cleanBase = base.endsWith('/') ? base.slice(0, -1) : base
+
+  if (cleanBase) {
+    return `${cleanBase}/${cleanPath}`
+  }
+  return `/${cleanPath}`
+}
+
 const imgUrl = computed(() => {
   if (!props.card.image) {
     console.warn(`Нет изображения для жанра: ${props.card.name}`)
-    return '/images/genres/default.jpg'
+    return getFullPath('/images/genres/default.jpg') // ИЗМЕНИТЕ
   }
 
   if (Array.isArray(props.card.image)) {
     const firstImage = props.card.image[0]
-
     if (typeof firstImage === 'string' && firstImage.trim()) {
-      return processImagePath(firstImage)
+      return getFullPath(firstImage) // ИЗМЕНИТЕ
     }
-
     console.warn(`Массив изображений пуст для жанра: ${props.card.name}`)
-    return '/images/genres/default.jpg'
+    return getFullPath('/images/genres/default.jpg') // ИЗМЕНИТЕ
   }
 
   if (typeof props.card.image === 'string' && props.card.image.trim()) {
-    return processImagePath(props.card.image)
+    return getFullPath(props.card.image) // ИЗМЕНИТЕ
   }
 
   console.warn(`Некорректный формат изображения для жанра: ${props.card.name}`, props.card.image)
   return ''
 })
 
-const processImagePath = (path: string): string => {
-  if (path.startsWith('/')) {
-    return path
-  }
-
-  if (path.startsWith('./') || path.startsWith('../')) {
-    return path.replace(/^\.+\//, '/')
-  }
-
-  if (!path.startsWith('http') && !path.startsWith('/')) {
-    return '/' + path
-  }
-
-  return path
-}
-
 const handleImageError = (event: Event) => {
   const img = event.target as HTMLImageElement
   console.error(`Ошибка загрузки: ${img.src}`)
 
-  img.src = '/images/genres/default.jpg'
+  img.src = getFullPath('/images/genres/default.jpg') // ИЗМЕНИТЕ
   img.onerror = null
 }
 
