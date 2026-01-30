@@ -6,7 +6,6 @@ import { createRouter, createWebHistory, createMemoryHistory, useRoute } from 'v
 import { useMoviesStore } from '@/stores/moviesStore'
 import { useBasketStore } from '@/stores/basketStore'
 import type { Film } from '@/api/types/filmType'
-import { wrap } from 'module'
 
 // мок данных type Film внутри DetailedMovie
 vi.mock('@/stores/moviesStore', () => ({
