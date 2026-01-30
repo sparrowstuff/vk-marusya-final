@@ -5,16 +5,38 @@
     <title>Redirecting</title>
     <script>
       const repo = 'vk-marusya-final'
-      const path = window.location.pathname
 
-      // Если это главная страница без репозитория в пути
-      if (path === '/' || !path.includes(repo)) {
-        window.location.replace('/' + repo + '/')
-      } else {
-        // Сохраняем текущий путь для hash роутера
-        const cleanPath = path.replace('/' + repo, '').replace(/\/$/, '')
-        window.location.replace('/' + repo + '/#' + cleanPath)
+      // Получаем текущий путь
+      const path = window.location.pathname
+      const search = window.location.search
+      const hash = window.location.hash
+
+      // Определяем целевой путь
+      let targetPath = ''
+
+      if (path.includes('/' + repo + '/')) {
+        // Уже есть репозиторий в пути
+        const parts = path.split('/' + repo + '/')
+        targetPath = parts[1] || ''
+      } else if (path !== '/' && path !== '') {
+        // Прямой доступ к пути без репозитория
+        targetPath = path.replace(/^\//, '')
       }
+
+      // Формируем новый URL для hash mode
+      let newUrl = '/' + repo + '/'
+
+      if (targetPath) {
+        // Для hash mode добавляем #
+        newUrl += '#' + (targetPath.startsWith('/') ? targetPath.substring(1) : targetPath)
+      }
+
+      // Добавляем query параметры и hash если есть
+      if (search) newUrl += search
+      if (hash && !hash.startsWith('#')) newUrl += '#' + hash
+
+      // Редирект
+      window.location.replace(newUrl)
     </script>
   </head>
   <body>
