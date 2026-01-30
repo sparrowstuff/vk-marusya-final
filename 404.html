@@ -4,19 +4,25 @@
     <meta charset="utf-8" />
     <title>Redirecting...</title>
     <script>
-      // Берём текущий путь и добавляем его к основному URL
-      const segment = 1 // количество сегментов пути, которые соответствуют подпапке на GitHub Pages (если есть)
-      const path = window.location.pathname.split('/').slice(segment).join('/')
-      const newUrl =
-        window.location.origin +
-        (window.location.pathname.includes('/' + path) ? '' : '/') +
-        path +
-        window.location.search +
-        window.location.hash
-      window.location.replace(newUrl)
+      // Для репозитория vk-marusya-final
+      // Базовый путь: /vk-marusya-final/
+      const repositoryName = 'vk-marusya-final'
+      const path = window.location.pathname
+
+      // Если мы не на нужном пути, перенаправляем
+      if (!path.includes('/' + repositoryName + '/')) {
+        // Сохраняем путь без первых слешей
+        const cleanPath = path.replace(/^\//, '')
+        const newPath =
+          '/' + repositoryName + '/' + cleanPath + window.location.search + window.location.hash
+        window.location.replace(newPath)
+      } else {
+        // Уже на правильном пути, но 404 - показываем приложение
+        window.location.replace('/' + repositoryName + '/')
+      }
     </script>
   </head>
   <body>
-    <p>Redirecting...</p>
+    <p>Redirecting to application...</p>
   </body>
 </html>
