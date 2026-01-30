@@ -2,27 +2,22 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Redirecting...</title>
+    <title>Redirecting</title>
     <script>
-      // Для репозитория vk-marusya-final
-      // Базовый путь: /vk-marusya-final/
-      const repositoryName = 'vk-marusya-final'
+      const repo = 'vk-marusya-final'
       const path = window.location.pathname
 
-      // Если мы не на нужном пути, перенаправляем
-      if (!path.includes('/' + repositoryName + '/')) {
-        // Сохраняем путь без первых слешей
-        const cleanPath = path.replace(/^\//, '')
-        const newPath =
-          '/' + repositoryName + '/' + cleanPath + window.location.search + window.location.hash
-        window.location.replace(newPath)
+      // Если это главная страница без репозитория в пути
+      if (path === '/' || !path.includes(repo)) {
+        window.location.replace('/' + repo + '/')
       } else {
-        // Уже на правильном пути, но 404 - показываем приложение
-        window.location.replace('/' + repositoryName + '/')
+        // Сохраняем текущий путь для hash роутера
+        const cleanPath = path.replace('/' + repo, '').replace(/\/$/, '')
+        window.location.replace('/' + repo + '/#' + cleanPath)
       }
     </script>
   </head>
   <body>
-    <p>Redirecting to application...</p>
+    <p>Redirecting...</p>
   </body>
 </html>
