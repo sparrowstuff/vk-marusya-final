@@ -38,7 +38,7 @@ export const formateGenres = (genreString: string[]) => {
 
   const genreImages: Record<string, string> = {
     action: getImagePath('images/genres/action.jpg'),
-    comedy: getImagePath('images/genres/сomedy.jpg'),
+    comedy: getImagePath('images/genres/comedy.jpg'),
     drama: getImagePath('images/genres/drama.webp'),
     horror: getImagePath('images/genres/horror.png'),
     fantasy: getImagePath('images/genres/fantasy.jpg'),
