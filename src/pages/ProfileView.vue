@@ -74,9 +74,23 @@
       <button class="profile__logout-btn btn" @click="handleLogout">Выйти из аккаунта</button>
     </div>
     <div class="profile__fav-films" v-else>
-      <span class="profile__no-films" v-if="basket.productsInBasket.length === 0"
-        >Фильмы добавленные в избранное отобразятся здесь</span
-      >
+      <div class="profile__no-films-menu" v-if="basket.productsInBasket.length === 0">
+        <span class="profile__no-films">Не найдено фильмов в избранном</span>
+        <div class="profile__go-to">
+          <div class="profile__go-to-inner">
+            <span class="profile__no-films">Для выбора перейдите на</span>
+            <button class="profile__go-to-main-btn btn" type="button" @click="goToMain">
+              Главную
+            </button>
+          </div>
+          <div class="profile__go-to-inner">
+            <span class="profile__no-films">или в</span>
+            <button class="profile__go-to-genres-btn btn" type="button" @click="goToGenres">
+              Жанры
+            </button>
+          </div>
+        </div>
+      </div>
       <div class="profile__catalog" v-else>
         <top-10-movie
           class="profile__movie-card"
@@ -149,6 +163,14 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('resize', checkWindowWidth)
 })
+
+const goToMain = () => {
+  router.push('/')
+}
+
+const goToGenres = () => {
+  router.push('/genres')
+}
 </script>
 
 <style scoped lang="scss">
@@ -260,6 +282,40 @@ onUnmounted(() => {
 
   &__logout-btn {
     max-width: 16.37rem;
+  }
+
+  &__no-films-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  &__go-to {
+    display: flex;
+    align-items: center;
+    gap: 0.62rem;
+
+    @media (max-width: 64rem) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__go-to-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.62rem;
+
+    @media (max-width: 64rem) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__go-to-main-btn,
+  &__go-to-genres-btn {
+    font-size: 1.5rem;
   }
 
   &__no-films {

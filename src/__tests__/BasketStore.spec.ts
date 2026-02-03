@@ -6,7 +6,6 @@ import { createRouter, createWebHistory, createMemoryHistory, useRoute } from 'v
 import { useBasketStore } from '@/stores/basketStore'
 import type { Film } from '@/api/types/filmType'
 import { api } from '@/utils/api'
-import { error } from 'console'
 
 // мок функций api(axios)
 vi.mock('@/utils/api', () => ({
