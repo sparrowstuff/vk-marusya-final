@@ -149,8 +149,8 @@ import { useMoviesStore } from '@/stores/moviesStore'
 import { useAuthStore } from '@/stores/authStore'
 import HomeView from '@/pages/HomeView.vue'
 import UserAuth from '@/components/UserAuth.vue'
-import SmallFilm from '@/components/SmallFilm.vue' // ← Добавьте
-import ModalMenu from '@/components/ModalMenu.vue' // ← Добавьте
+import SmallFilm from '@/components/SmallFilm.vue'
+import ModalMenu from '@/components/ModalMenu.vue'
 import { RouterLink } from 'vue-router'
 import GenresView from '@/pages/GenresView.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
@@ -250,7 +250,6 @@ const top5SearchMovies = computed(() => {
 
 const toggleSearch = () => {
   showSearchInput.value = !showSearchInput.value
-  // searchNotActive.value = !searchNotActive.value
 
   if (!showSearchInput.value) {
     clearSearch()
@@ -316,7 +315,6 @@ const isSearching = computed(() => {
   align-items: center;
   gap: 0.62rem;
   justify-content: space-between;
-  // padding: 0.62rem 0;
 
   &__navigation-block {
     display: flex;
