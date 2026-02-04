@@ -19,6 +19,13 @@ export type Film = {
   runtime: number
 }
 
+export type TopFilm = {
+  id: number
+  posterUrl: string
+  backdropUrl?: string
+  title: string
+}
+
 export type Genre = {
   id: number
   name: string

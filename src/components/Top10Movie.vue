@@ -23,12 +23,7 @@
 
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
-
-type TopFilm = {
-  id: number
-  posterUrl: string
-  title: string
-}
+import type { TopFilm } from '@/api/types/filmType'
 
 const props = defineProps<{
   film: TopFilm
