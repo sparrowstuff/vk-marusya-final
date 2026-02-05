@@ -1,12 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { mount, shallowMount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import DetailedMovie from '../components/DetailedMovie.vue'
 import { createPinia, setActivePinia } from 'pinia'
-import { createRouter, createWebHistory, createMemoryHistory, useRoute } from 'vue-router'
-import { useMoviesStore } from '@/stores/moviesStore'
-import { useBasketStore } from '@/stores/basketStore'
-import type { Film } from '@/api/types/filmType'
-
+import { createRouter, createMemoryHistory } from 'vue-router'
 // мок данных type Film внутри DetailedMovie
 vi.mock('@/stores/moviesStore', () => ({
   useMoviesStore: () => ({

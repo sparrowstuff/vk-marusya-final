@@ -1,16 +1,10 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { mount, shallowMount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import DetailedMovie from '../components/DetailedMovie.vue'
 import { createPinia, setActivePinia } from 'pinia'
-import { createRouter, createWebHistory, createMemoryHistory, useRoute } from 'vue-router'
+import { createRouter, createMemoryHistory } from 'vue-router'
 import type { Film } from '@/api/types/filmType'
-import { useMoviesStore } from '@/stores/moviesStore'
-import { useBasketStore } from '@/stores/basketStore'
 import RandomMovie from '@/components/RandomMovie.vue'
-import { useAuthStore } from '@/stores/authStore'
-import { useModalStore } from '@/stores/modalStore'
-
-const authStore = useAuthStore()
 
 const mockGetRandomMovie = vi.hoisted(() => vi.fn())
 const mockAddToBasket = vi.hoisted(() => vi.fn())

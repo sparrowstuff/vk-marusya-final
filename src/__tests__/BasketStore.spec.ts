@@ -1,8 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { mount, shallowMount } from '@vue/test-utils'
-import DetailedMovie from '../components/DetailedMovie.vue'
 import { createPinia, setActivePinia } from 'pinia'
-import { createRouter, createWebHistory, createMemoryHistory, useRoute } from 'vue-router'
 import { useBasketStore } from '@/stores/basketStore'
 import type { Film } from '@/api/types/filmType'
 import { api } from '@/utils/api'

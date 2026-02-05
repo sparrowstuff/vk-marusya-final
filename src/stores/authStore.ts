@@ -1,5 +1,4 @@
 import type { User } from '@/api/types/userType'
-import { api } from '@/utils/api'
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 

@@ -1,9 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { mount, shallowMount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import ModalMenu from '@/components/ModalMenu.vue'
 import { createPinia, setActivePinia } from 'pinia'
-import { createRouter, createWebHistory, createMemoryHistory, useRoute } from 'vue-router'
-import { useAuthStore } from '@/stores/authStore'
+import { createRouter } from 'vue-router'
 import type { User } from '@/api/types/userType'
 
 vi.mock('@/stores/authStore', () => ({

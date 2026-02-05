@@ -1,9 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { mount, shallowMount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import SmallFilm from '@/components/SmallFilm.vue'
 import { createPinia, setActivePinia } from 'pinia'
-import { createRouter, createWebHistory, createMemoryHistory, useRoute } from 'vue-router'
-import { useMoviesStore } from '@/stores/moviesStore'
+import { createRouter, createMemoryHistory } from 'vue-router'
 import type { Film } from '@/api/types/filmType'
 
 describe('SmallFilm', () => {

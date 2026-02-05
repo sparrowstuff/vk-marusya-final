@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { mount, shallowMount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import Top10Movie from '@/components/Top10Movie.vue'
 import { createPinia, setActivePinia } from 'pinia'
-import { createRouter, createWebHistory, createMemoryHistory, useRoute } from 'vue-router'
+import { createRouter, createMemoryHistory } from 'vue-router'
 import type { TopFilm } from '@/api/types/filmType'
 import DetailedMovie from '@/components/DetailedMovie.vue'
 
@@ -11,10 +11,6 @@ const mockFilm: TopFilm = {
   posterUrl: 'Test Url',
   title: 'Test title',
   backdropUrl: 'Test backdrop Url',
-}
-
-const mockMovies = {
-  movies: [],
 }
 
 describe('Top10Movie', () => {
