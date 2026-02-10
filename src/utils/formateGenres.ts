@@ -1,15 +1,26 @@
 const BASE_PATH = import.meta.env.BASE_URL || ''
 
 const getImagePath = (path: string): string => {
-  // На production: BASE_URL = '/vk-marusya-final/'
-  // На dev: BASE_URL = ''
   const base = import.meta.env.BASE_URL || ''
 
-  // Убираем лишние слеши
-  const cleanPath = path.startsWith('/') ? path.slice(1) : path
-  const cleanBase = base.endsWith('/') ? base.slice(0, -1) : base
+  // Проверяем режим
+  const isDev = import.meta.env.DEV
+  const isProd = import.meta.env.PROD
 
-  return `${cleanBase}/${cleanPath}`
+  // Для дев-сервера
+  if (isDev) {
+    return '/' + (path.startsWith('/') ? path.slice(1) : path)
+  }
+
+  // Для продакшена
+  if (isProd) {
+    const cleanBase = base.endsWith('/') ? base.slice(0, -1) : base
+    const cleanPath = path.startsWith('/') ? path.slice(1) : path
+    return `/${cleanBase}/${cleanPath}`
+  }
+
+  // По умолчанию
+  return base + (path.startsWith('/') ? path : '/' + path)
 }
 
 export const formateGenres = (genreString: string[]) => {
