@@ -1,3 +1,8 @@
+import FilmView from '@/pages/FilmView.vue'
+import GenreFilteredView from '@/pages/GenreFilteredView.vue'
+import GenresView from '@/pages/GenresView.vue'
+import HomeView from '@/pages/HomeView.vue'
+import ProfileView from '@/pages/ProfileView.vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 const router = createRouter({
@@ -5,19 +10,19 @@ const router = createRouter({
   base: '/vk-marusya-final/',
   routes: [
     { path: '/', redirect: '/home' },
-    { name: 'home', path: '/home', component: () => import('@/pages/HomeView.vue') },
-    { name: 'genres', path: '/genres', component: () => import('@/pages/GenresView.vue') },
-    { name: 'profile', path: '/profile', component: () => import('@/pages/ProfileView.vue') },
+    { name: 'home', path: '/home', component: HomeView },
+    { name: 'genres', path: '/genres', component: GenresView },
+    { name: 'profile', path: '/profile', component: ProfileView },
     {
       name: 'film',
       path: '/film/:id',
-      component: () => import('@/pages/FilmView.vue'),
+      component: FilmView,
       props: true, // передает параметр id как props
     },
     {
       name: 'genre-filtered',
       path: '/genres/filtered',
-      component: () => import('@/pages/GenreFilteredView.vue'),
+      component: GenreFilteredView,
     },
   ],
 })

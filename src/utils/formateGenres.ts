@@ -1,26 +1,8 @@
 const BASE_PATH = import.meta.env.BASE_URL || ''
 
 const getImagePath = (path: string): string => {
-  const base = import.meta.env.BASE_URL || ''
-
-  // Проверяем режим
-  const isDev = import.meta.env.DEV
-  const isProd = import.meta.env.PROD
-
-  // Для дев-сервера
-  if (isDev) {
-    return '/' + (path.startsWith('/') ? path.slice(1) : path)
-  }
-
-  // Для продакшена
-  if (isProd) {
-    const cleanBase = base.endsWith('/') ? base.slice(0, -1) : base
-    const cleanPath = path.startsWith('/') ? path.slice(1) : path
-    return `/${cleanBase}/${cleanPath}`
-  }
-
-  // По умолчанию
-  return base + (path.startsWith('/') ? path : '/' + path)
+  // Vite автоматически добавит base для public файлов
+  return path.startsWith('/') ? path : '/' + path
 }
 
 export const formateGenres = (genreString: string[]) => {

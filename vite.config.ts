@@ -12,5 +12,15 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-  base: process.env.NODE_ENV === 'production' ? '/vk-marusya-final/' : '/',
+  base: '/vk-marusya-final/',
+  build: {
+    rollupOptions: {
+      output: {
+        // для динамических импортов на GitHub Pages
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]',
+      },
+    },
+  },
 })
