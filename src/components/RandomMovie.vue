@@ -86,12 +86,20 @@
         </div>
       </div>
       <img
+        v-if="film.posterUrl"
         class="random-movie__img"
         :alt="film.title"
         :src="film.posterUrl"
         width="680"
         height="300"
         frameborder="0"
+      />
+      <img
+        v-else
+        src="/images/picture-unavailable.png"
+        alt="film-picture-unavailable"
+        width="680"
+        height="300"
       />
     </div>
     <div

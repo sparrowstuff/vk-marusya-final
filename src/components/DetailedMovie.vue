@@ -66,6 +66,7 @@
         </div>
       </div>
       <img
+        v-if="film.posterUrl"
         class="detailed-movie__img"
         :alt="film.title"
         :src="film.posterUrl"
@@ -75,6 +76,14 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
         title="Трейлер фильма"
+      />
+      <img
+        class="detailed-movie__img"
+        v-else
+        src="/images/picture-unavailable.png"
+        alt="film-picture-unavailable"
+        width="680"
+        height="300"
       />
     </div>
     <div

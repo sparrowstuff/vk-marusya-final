@@ -10,10 +10,18 @@
       :alt="film.title"
     />
     <img
-      v-else
+      v-else-if="film.backdropUrl"
       :src="film.backdropUrl"
       :alt="film.title"
       class="top-film__img"
+      width="224"
+      height="336"
+    />
+    <img
+      v-else
+      class="top-film__img"
+      src="/images/picture-unavailable.png"
+      alt="film-picture-unavailable"
       width="224"
       height="336"
     />
