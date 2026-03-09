@@ -11,7 +11,7 @@
     />
     <img
       v-else
-      :srcset="film.backdropUrl"
+      :src="film.backdropUrl"
       :alt="film.title"
       class="top-film__img"
       width="224"

@@ -1,5 +1,5 @@
 <template>
-  <div class="modal">
+  <div class="modal" v-on-click-outside="modal.closeModalWindow">
     <button
       class="modal__close-btn btn btn--close"
       type="button"
@@ -231,6 +231,8 @@
 import type { User } from '@/api/types/userType'
 import { useAuthStore } from '@/stores/authStore'
 import { ref, reactive, computed } from 'vue'
+import { useModalStore } from '@/stores/modalStore'
+import { vOnClickOutside } from '@vueuse/components'
 
 const emit = defineEmits(['closeModal', 'success'])
 
@@ -238,6 +240,7 @@ const authStore = useAuthStore()
 const currentMode = ref<'login' | 'register'>('login')
 const serverError = ref('')
 const isSuccess = ref(false)
+const modal = useModalStore()
 
 const registerForm = reactive({
   email: '',
