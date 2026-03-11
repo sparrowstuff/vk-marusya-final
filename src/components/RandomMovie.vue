@@ -103,6 +103,7 @@
       />
     </div>
     <div
+      v-on-click-outside="closeTrailerWindow"
       class="random-movie__watch-trailer-window"
       :class="{ 'random-movie__watch-trailer-window--show': showTrailer }"
     >
@@ -149,6 +150,7 @@ import { useModalStore } from '@/stores/modalStore'
 import { useMoviesStore } from '@/stores/moviesStore'
 import { useAuthStore } from '@/stores/authStore'
 import type { Film } from '@/api/types/filmType'
+import { vOnClickOutside } from '@vueuse/components'
 
 const router = useRouter()
 const authStore = useAuthStore()

@@ -87,6 +87,7 @@
       />
     </div>
     <div
+      v-on-click-outside="closeTrailerWindow"
       class="detailed-movie__watch-trailer-window"
       :class="{ 'detailed-movie__watch-trailer-window--show': showTrailer }"
     >
@@ -160,6 +161,7 @@ import { useBasketStore } from '@/stores/basketStore'
 import { useModalStore } from '@/stores/modalStore'
 import { useMoviesStore } from '@/stores/moviesStore'
 import { useAuthStore } from '@/stores/authStore'
+import { vOnClickOutside } from '@vueuse/components'
 
 const route = useRoute()
 const movies = useMoviesStore()
@@ -277,7 +279,7 @@ const youtubeEmbedUrl = computed(() => {
 })
 
 const closeTrailerWindow = () => {
-  showTrailer.value = !showTrailer.value
+  showTrailer.value = false
 }
 
 const formatNumber = (num: number | undefined): string => {
